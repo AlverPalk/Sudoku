@@ -1,9 +1,12 @@
 import React from 'react';
-import './App.css';
+import Layout from "./hoc/Layout/Layout";
+import Sudoku from "./containers/Sudoku/Sudoku";
 
-function App() {
+const App = () => {
     return (
-        <div/>
+        <Layout>
+            <Sudoku />
+        </Layout>
     );
 }
 
