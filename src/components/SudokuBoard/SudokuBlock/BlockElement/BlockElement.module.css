@@ -1,0 +1,71 @@
+.BlockElement {
+    border: 1px solid #ecebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.BlockElement input {
+    margin: 0;
+    height: 100%;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    cursor: default;
+    -moz-appearance: textfield;
+}
+
+.BlockElement::-webkit-outer-spin-button,
+.BlockElement::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.BlockElement input:focus {
+    outline: none;
+}
+
+.BlockElement:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    box-sizing: border-box;
+}
+
+.NightMode.BlockElement {
+    background-color: #898989;
+}
+
+.NightMode {
+    border: 1px solid #5f5f5f;
+    box-sizing: border-box;
+    transition: 300ms;
+}
+
+.NightMode input {
+    color: white;
+    width: 100%;
+    padding: 0;
+    transition: 300ms;
+}
+
+@media (min-width: 800px) {
+    .BlockElement input {
+        font-size: 1em;
+    }
+
+    .BlockElement:hover,
+    .BlockElement:focus-within {
+        background-color: #ecebeb;
+    }
+
+    .NightMode.BlockElement:hover,
+    .NightMode.BlockElement:focus-within{
+        background-color: #5f5f5f;
+    }
+}

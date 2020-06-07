@@ -2,5 +2,30 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    border: 1px solid red;
+}
+
+@media (min-width: 800px) {
+    .GameHeader {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-bottom: 20px;
+    }
+
+    p {
+        z-index: 20;
+    }
+
+    .GameHeader:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #e8e8e8;
+        height: 70px;
+    }
+
+    .NightMode.GameHeader:before {
+        background-color: #898989;
+    }
 }

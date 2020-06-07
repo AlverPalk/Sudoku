@@ -1,0 +1,93 @@
+.Button {
+    border: none;
+    padding: 12px 32px;
+    margin: 4px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    background-color: white;
+    transition: 300ms;
+}
+
+.Button::-moz-focus-inner,
+.Button::-moz-focus-outer {
+    border: 0;
+}
+
+.CheckButton {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: #8fe57e;
+    font-weight: bold;
+    color: #fff;
+}
+
+.HintButton {
+    position: relative;
+    border: 1px solid #dee57e;
+}
+
+.HintButton:before {
+    content: "?";
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dee57e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a7ad03;
+    transition: 300ms;
+}
+
+.NightMode {
+    position: relative;
+    background-color: #575757;
+    color: white;
+    transition: 300ms;
+    border: none;
+}
+
+.HintButton:hover {
+    background-color: #ebefab
+}
+
+.NewGameButton:hover {
+    background-color: #f6f6f6;
+}
+
+@media (min-width: 800px) {
+    .Button {
+        max-height: 60px;
+        padding: 6px 26px;
+
+    }
+    .CheckButton {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .CheckButton:hover {
+        background-color: #70d25c;
+    }
+
+    .HintButton {
+        grid-row-start: 3;
+    }
+
+    .NightMode.HintButton:hover {
+        background-color: #a7ad03;
+    }
+
+    .NightMode.NewGameButton:hover {
+        background-color: #424242
+    }
+
+
+}

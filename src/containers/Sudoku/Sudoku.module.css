@@ -1,0 +1,21 @@
+@media (min-width: 800px) {
+    .Sudoku {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(300px, 600px) minmax(200px, 300px);
+        grid-column-gap: 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+        justify-content: space-around;
+        margin: 0 auto;
+        max-width: 1000px;
+        background-color: #f3f3f3;
+        padding: 14px 20px 20px 20px;
+        box-shadow: 2px 2px 4px #c6c6c6;
+    }
+
+    .NightMode.Sudoku {
+        background-color: #909090;
+        box-shadow: 2px 2px 4px #616161;
+    }
+}

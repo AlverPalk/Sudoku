@@ -1,0 +1,3 @@
+export const NIGHT_MODE_CHANGE = 'NIGHT_MODE_CHANGE';
+export const RESIZE = 'RESIZE';
+export const BLOCK_ELEMENT_CHANGE = 'BLOCK_ELEMENT_CHANGE';

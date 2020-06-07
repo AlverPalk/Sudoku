@@ -1,0 +1,23 @@
+.GameControls {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #2d2d2d;
+    width: auto;
+}
+
+@media (min-width: 800px) {
+    .GameControls {
+        margin-top: 0;
+        max-width: 300px;
+        grid-template-rows: 60px;
+        align-content: flex-start;
+        background-color: #e8e8e8;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .NightMode.GameControls {
+        background-color: #898989;
+    }
+}
