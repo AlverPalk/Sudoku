@@ -28,7 +28,9 @@ const mapKeysToFields = (arr) => {
 const initialState = {
     nightMode: false,
     mobileView: window.innerWidth < 800,
-    fields: mapKeysToFields(puzzleArr)
+    fields: mapKeysToFields(puzzleArr),
+    timer: 0,
+    timerRunning: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -58,6 +60,16 @@ const reducer = (state = initialState, action) => {
                         };
                     })})
 
+            }
+        case actionTypes.UPDATE_TIMER:
+            return {
+                ...state,
+                timer: state.timer + 1
+            }
+        case actionTypes.TIMER_TOGGLE:
+            return {
+                ...state,
+                timerRunning: !state.timerRunning
             }
         default:
             return state;

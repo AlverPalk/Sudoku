@@ -9,7 +9,13 @@ const GameHeader = (props) => {
     return (
         <div className={classArray.join(' ')}>
             <ModeSwitch />
-            <Timer nightMode={props.nightMode} />
+            <Timer
+                updateHandler={props.timerUpdateHandler}
+                nightMode={props.nightMode}
+                timer={props.timer}
+                isTimerRunning={props.isTimerRunning}
+                timerToggleHandler={props.timerToggleHandler}
+            />
         </div>
     );
 };
