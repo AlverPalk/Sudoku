@@ -15,6 +15,7 @@
     "redux": "^4.0.5"
   },
   "scripts": {
+    "install": "napa robatron/sudoku.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
