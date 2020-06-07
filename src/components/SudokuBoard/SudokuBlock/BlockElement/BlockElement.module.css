@@ -63,7 +63,15 @@
 }
 
 .InitialValue.BlockElement:hover {
-    background-color: transparent;
+    background-color: #f6f6f6;
+}
+
+.InitialValue.NightMode {
+    background-color: #797979;
+}
+
+.InitialValue.NightMode.BlockElement:hover {
+    background-color: #797979;
 }
 
 @media (min-width: 800px) {
