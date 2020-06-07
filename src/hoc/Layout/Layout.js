@@ -1,21 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './Layout.module.css';
-import Notification from "../../components/UI/Notification/Notification";
 import * as actionTypes from '../../store/actions';
+import ReactNotification, {store} from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css';
 
 const Layout = (props) => {
+
+    if (props.displayNotification) {
+        store.addNotification({
+            title: "Possible values:",
+            message: props.possible.join(' ') ? props.possible.join(', ') + ' (+2 min)' : 'lol',
+            type: "info",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+                duration: 5000,
+                onScreen: true
+            }
+        });
+        props.onCancelNotification();
+    }
 
     let classArray = [classes.Layout];
     if (props.nightMode) classArray = [classes.Layout, classes.NightMode]
 
     return (
         <div className={ classArray.join(' ') }>
-            <Notification
-                msg={'Possible numbers: ' + props.possible.join(', ')}
-                displayNotification={props.displayNotification}
-                cancelNotificationHandler={props.onCancelNotification}
-            />
+            <ReactNotification />
             { props.children }
         </div>
     );
