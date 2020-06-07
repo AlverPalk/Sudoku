@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onNightModeChange: () => dispatch({type: actionTypes.NIGHT_MODE_CHANGE}),
         onResize: () => dispatch({type: actionTypes.RESIZE}),
-        onBLockElementChange: () => dispatch({type: actionTypes.BLOCK_ELEMENT_CHANGE})
+        onBLockElementChange: (id, newValue) => {dispatch({type: actionTypes.BLOCK_ELEMENT_CHANGE, id: id, value: newValue})}
     }
 }
 

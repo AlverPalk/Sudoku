@@ -5,7 +5,6 @@ import SudokuBlock from "./SudokuBlock/SudokuBlock";
 const SudokuBoard = (props) => {
     let classArray = [classes.SudokuBoard];
     if (props.nightMode) classArray = [classes.SudokuBoard, classes.NightMode]
-
     const sudokuBlocks = props.fields.map((field) => {
         return <SudokuBlock
             key={field + Math.floor(Math.random() * 100000000)}

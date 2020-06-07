@@ -9,8 +9,9 @@ const SudokuBlock = (props) => {
     const blockElements = props.fields.map((field) => {
         return <BlockElement
             changeHandler={props.changeHandler}
-            key={field + Math.floor(Math.random() * 10000000)}
-            nightMode={props.nightMode} value={field} />
+            key={field.id}
+            nightMode={props.nightMode}
+            field={field} />
     })
 
     return (

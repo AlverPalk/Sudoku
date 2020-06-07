@@ -3,12 +3,32 @@ import { sudoku } from 'sudoku.js/sudoku.js';
 
 const boardString = sudoku.generate('easy');
 const puzzleArr = sudoku.board_string_to_grid(boardString);
-console.log(puzzleArr)
+
+const mapKeysToFields = (arr) => {
+    let ids = [];
+    return arr.map((sudokuBlock) => {
+        return sudokuBlock.map((field) => {
+            let id;
+            for (let i = 0; i < 1; i++) {
+                id = parseInt(Math.floor(Math.random() * 10000000));
+                if (ids.includes(id)) {
+                    i--;
+                } else {
+                    ids.push(id);
+                }
+            }
+            return {
+                id: parseInt(Math.floor(Math.random() * 10000000)),
+                value: field
+            }
+        })
+    })
+}
 
 const initialState = {
     nightMode: false,
     mobileView: window.innerWidth < 800,
-    fields: puzzleArr
+    fields: mapKeysToFields(puzzleArr)
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,9 +46,19 @@ const reducer = (state = initialState, action) => {
         case actionTypes.BLOCK_ELEMENT_CHANGE:
             // Handle on change logic
             return {
-                ...state
+                ...state,
+                fields: state.fields.concat().map((sudokuBlock) => {
+                    return sudokuBlock.map(blockElement => {
+                        if (blockElement.id === action.id) {
+                            blockElement.value = action.value;
+                        }
+                        return {
+                            id: blockElement.id,
+                            value: blockElement.value
+                        };
+                    })})
+
             }
-            break;
         default:
             return state;
     }

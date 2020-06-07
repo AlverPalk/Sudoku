@@ -6,7 +6,12 @@ const BlockElement = (props) => {
     if (props.nightMode) classArray = [classes.BlockElement, classes.NightMode]
     return (
         <div className={ classArray.join(' ') }>
-            <input onChange={props.changeHandler} type="number" value={props.value} min="1" max="9"/>
+            <input
+                key={props.field.id}
+                onChange={(event) => {props.changeHandler(props.field.id, event.target.value)}}
+                type="number"
+                value={props.field.value}
+                min="0" max="9"/>
         </div>
     );
 };
