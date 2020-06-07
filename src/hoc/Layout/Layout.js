@@ -1,38 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './Layout.module.css';
 import * as actionTypes from '../../store/actions';
 import ReactNotification, {store} from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css';
 
-const Layout = (props) => {
-
-    if (props.displayNotification) {
-        store.addNotification({
-            title: "Possible values:",
-            message: props.possible.join(' ') ? props.possible.join(', ') + ' (+2 min)' : 'lol',
-            type: "info",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animated", "fadeIn"],
-            animationOut: ["animated", "fadeOut"],
-            dismiss: {
-                duration: 5000,
-                onScreen: true
-            }
-        });
-        props.onCancelNotification();
+class Layout extends Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.displayNotification) {
+            store.addNotification({
+                title: "Possible values:",
+                message: this.props.possible.join(' ') ? this.props.possible.join(', ') + ' (+2 min)' : 'lol',
+                type: "info",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animated", "fadeIn"],
+                animationOut: ["animated", "fadeOut"],
+                dismiss: {
+                    duration: 5000,
+                    onScreen: true
+                }
+            });
+            this.props.onCancelNotification();
+        }
     }
 
-    let classArray = [classes.Layout];
-    if (props.nightMode) classArray = [classes.Layout, classes.NightMode]
+    render() {
+        let classArray = [classes.Layout];
+        if (this.props.nightMode) classArray = [classes.Layout, classes.NightMode]
 
-    return (
-        <div className={ classArray.join(' ') }>
-            <ReactNotification />
-            { props.children }
-        </div>
-    );
+        return (
+            <div className={ classArray.join(' ') }>
+                <ReactNotification />
+                { this.props.children }
+            </div>
+        );
+    }
+
 };
 
 const mapStateToProps = (state) => {

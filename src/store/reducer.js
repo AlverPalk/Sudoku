@@ -76,13 +76,14 @@ const reducer = (state = initialState, action) => {
         case actionTypes.GET_HINT:
             let index1 = null;
             let index2 = null;
-            state.fields.map((block, index) => {
+            state.fields.forEach((block, index) => {
                 for (let i = 0; i < block.length; i++) {
                     if (block[i].id === state.activeBlockElementId) {
                         index1 = index;
                         index2 = i;
                     }
                 }
+                return;
             })
             return {
                 ...state,
