@@ -3,7 +3,13 @@ import classes from './BlockElement.module.css';
 
 const BlockElement = (props) => {
     let classArray = [classes.BlockElement];
-    if (props.nightMode) classArray = [classes.BlockElement, classes.NightMode]
+    if (props.nightMode && props.field.hasInitialValue) {
+        classArray = [classes.BlockElement, classes.NightMode, classes.InitialValue]
+    } else if (props.nightMode) {
+        classArray = [classes.BlockElement, classes.NightMode]
+    } else if (props.field.hasInitialValue) {
+        classArray = [classes.BlockElement, classes.InitialValue]
+    }
     return (
         <div className={ classArray.join(' ') }>
             <input
@@ -11,7 +17,9 @@ const BlockElement = (props) => {
                 onChange={(event) => {props.changeHandler(props.field.id, event.target.value)}}
                 type="number"
                 value={props.field.value}
-                min="0" max="9"/>
+                readOnly={props.field.hasInitialValue ? 'readOnly' : null}
+                min="1" max="9"
+            />
         </div>
     );
 };

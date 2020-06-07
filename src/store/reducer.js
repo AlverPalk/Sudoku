@@ -1,7 +1,7 @@
 import * as actionTypes from '../store/actions';
 import { sudoku } from 'sudoku.js/sudoku.js';
 
-const boardString = sudoku.generate('easy');
+const boardString = sudoku.generate('hard');
 const puzzleArr = sudoku.board_string_to_grid(boardString);
 
 const mapKeysToFields = (arr) => {
@@ -17,9 +17,12 @@ const mapKeysToFields = (arr) => {
                     ids.push(id);
                 }
             }
+            const hasInitialValue = field !== '.';
+
             return {
                 id: parseInt(Math.floor(Math.random() * 10000000)),
-                value: field
+                value: field,
+                hasInitialValue: hasInitialValue
             }
         })
     })
@@ -56,7 +59,8 @@ const reducer = (state = initialState, action) => {
                         }
                         return {
                             id: blockElement.id,
-                            value: blockElement.value
+                            value: blockElement.value,
+                            hasInitialValue: blockElement.hasInitialValue
                         };
                     })})
 

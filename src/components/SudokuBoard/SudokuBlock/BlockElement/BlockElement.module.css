@@ -12,12 +12,12 @@
 .BlockElement input {
     margin: 0;
     height: 100%;
-    width: 30px;
     background-color: transparent;
     border: none;
     text-align: center;
     cursor: default;
     -moz-appearance: textfield;
+    width: 100%;
 }
 
 .BlockElement::-webkit-outer-spin-button,
@@ -52,6 +52,18 @@
     width: 100%;
     padding: 0;
     transition: 300ms;
+}
+
+.InitialValue input {
+    font-weight: bold;
+}
+
+.InitialValue {
+    background-color: #f6f6f6;
+}
+
+.InitialValue.BlockElement:hover {
+    background-color: transparent;
 }
 
 @media (min-width: 800px) {
