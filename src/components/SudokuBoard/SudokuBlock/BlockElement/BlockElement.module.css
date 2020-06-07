@@ -56,13 +56,18 @@
 
 .InitialValue input {
     font-weight: bold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .InitialValue {
     background-color: #f6f6f6;
 }
 
-.InitialValue.BlockElement:hover {
+.InitialValue.BlockElement:hover,
+.InitialValue.BlockElement:focus-within {
     background-color: #f6f6f6;
 }
 
@@ -70,7 +75,8 @@
     background-color: #797979;
 }
 
-.InitialValue.NightMode.BlockElement:hover {
+.InitialValue.NightMode.BlockElement:hover,
+.InitialValue.NightMode.BlockElement:focus-within {
     background-color: #797979;
 }
 
