@@ -27,8 +27,18 @@ class Sudoku extends Component {
                         timer={this.props.timer}
                     />
                 </SettingsContext.Provider>
-                <SudokuBoard elementChangeHandler={this.props.onBLockElementChange} fields={this.props.fields} nightMode={this.props.nightMode} />
-                <GameControls mobileView={this.props.mobileView} nightMode={this.props.nightMode} />
+                <SudokuBoard
+                    elementChangeHandler={this.props.onBlockElementChange}
+                    elementSelectHandler={this.props.onBlockElementSelect}
+                    fields={this.props.fields}
+                    nightMode={this.props.nightMode}
+                />
+                <GameControls
+                    mobileView={this.props.mobileView}
+                    nightMode={this.props.nightMode}
+                    activeBlockElementId={this.props.activeBlockElementId}
+                    getHintHandler={this.props.onGetHint}
+                />
             </div>
         );
     }
@@ -41,7 +51,9 @@ const mapStateToProps = (state) => {
         fields: state.fields,
         mobileView: state.mobileView,
         timer: state.timer,
-        isTimerRunning: state.timerRunning
+        isTimerRunning: state.timerRunning,
+        activeBlockElementId: state.activeBlockElementId,
+        possible: state.possible
     }
 }
 
@@ -49,9 +61,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onNightModeChange: () => dispatch({type: actionTypes.NIGHT_MODE_CHANGE}),
         onResize: () => dispatch({type: actionTypes.RESIZE}),
-        onBLockElementChange: (id, newValue) => {dispatch({type: actionTypes.BLOCK_ELEMENT_CHANGE, id: id, value: newValue})},
+        onBlockElementChange: (id, newValue) => {dispatch({type: actionTypes.BLOCK_ELEMENT_CHANGE, id: id, value: newValue})},
         onTimerUpdate: () => {dispatch({type: actionTypes.UPDATE_TIMER})},
-        onTimerToggle: () => {dispatch({type: actionTypes.TIMER_TOGGLE})}
+        onTimerToggle: () => {dispatch({type: actionTypes.TIMER_TOGGLE})},
+        onBlockElementSelect: (activeElementId) => {dispatch({type: actionTypes.BLOCK_ELEMENT_ACTIVE, elementId: activeElementId})},
+        onGetHint: () => {dispatch({type: actionTypes.GET_HINT})}
     }
 }
 

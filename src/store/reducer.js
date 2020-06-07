@@ -33,7 +33,10 @@ const initialState = {
     mobileView: window.innerWidth < 800,
     fields: mapKeysToFields(puzzleArr),
     timer: 0,
-    timerRunning: true
+    timerRunning: true,
+    activeBlockElementId: null,
+    possible: [],
+    displayNotification: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -65,10 +68,37 @@ const reducer = (state = initialState, action) => {
                     })})
 
             }
+        case actionTypes.BLOCK_ELEMENT_ACTIVE:
+            return {
+                ...state,
+                activeBlockElementId: action.elementId
+            }
+        case actionTypes.GET_HINT:
+            let index1 = null;
+            let index2 = null;
+            state.fields.map((block, index) => {
+                for (let i = 0; i < block.length; i++) {
+                    if (block[i].id === state.activeBlockElementId) {
+                        index1 = index;
+                        index2 = i;
+                    }
+                }
+            })
+            return {
+                ...state,
+                possible: sudoku.get_candidates(boardString)[index1][index2].split(''),
+                displayNotification: true,
+                timer: state.timer + 120
+            }
         case actionTypes.UPDATE_TIMER:
             return {
                 ...state,
                 timer: state.timer + 1
+            }
+        case actionTypes.CANCEL_NOTIFICATION:
+            return {
+                ...state,
+                displayNotification: false
             }
         case actionTypes.TIMER_TOGGLE:
             return {

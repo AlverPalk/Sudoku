@@ -13,6 +13,14 @@
     border: 0;
 }
 
+.Button:focus {
+    color: #2d2d2d;
+}
+
+.NightMode.Button:focus {
+    color: white;
+}
+
 .CheckButton {
     grid-row-start: 1;
     grid-row-end: 4;
@@ -26,6 +34,30 @@
 .HintButton {
     position: relative;
     border: 1px solid #dee57e;
+}
+
+.Disabled {
+    background-color: #e8e8e8;
+    opacity: .7;
+}
+
+.Disabled.NightMode {
+    background-color: #6c6c6c;
+    opacity: .7;
+}
+
+.Disabled.HintButton:before,
+.Disabled.NightMode.HintButton:before {
+    background-color: #dee2ab;
+    color: #b0b43e;
+}
+
+.Disabled.HintButton:hover {
+    background-color: transparent;
+}
+
+.Disabled.NightMode.HintButton:hover {
+    background-color: #6c6c6c;
 }
 
 .HintButton:before {

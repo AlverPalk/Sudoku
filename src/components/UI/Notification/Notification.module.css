@@ -1,0 +1,14 @@
+.Notification {
+    position: absolute;
+    z-index: 100;
+    width: auto;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10%;
+    box-shadow: 2px 2px 6px #a1a1a1;
+}

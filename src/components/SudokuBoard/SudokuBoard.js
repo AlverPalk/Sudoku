@@ -10,7 +10,9 @@ const SudokuBoard = (props) => {
             key={field + Math.floor(Math.random() * 100000000)}
             changeHandler={props.elementChangeHandler}
             fields={field}
-            nightMode={props.nightMode} />
+            nightMode={props.nightMode}
+            elementSelectHandler={props.elementSelectHandler}
+        />
     })
 
     return (

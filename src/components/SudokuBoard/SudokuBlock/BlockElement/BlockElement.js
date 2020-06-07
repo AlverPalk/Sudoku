@@ -10,11 +10,14 @@ const BlockElement = (props) => {
     } else if (props.field.hasInitialValue) {
         classArray = [classes.BlockElement, classes.InitialValue]
     }
+
     return (
         <div className={ classArray.join(' ') }>
             <input
                 key={props.field.id}
                 onChange={(event) => {props.changeHandler(props.field.id, event.target.value)}}
+                onFocus={props.elementSelectHandler.bind(this, props.field.id)}
+                onBlur={props.elementSelectHandler.bind(this, undefined)}
                 type="number"
                 value={props.field.value}
                 readOnly={props.field.hasInitialValue ? 'readOnly' : null}

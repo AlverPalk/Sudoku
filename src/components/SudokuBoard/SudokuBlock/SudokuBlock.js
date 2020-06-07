@@ -11,7 +11,9 @@ const SudokuBlock = (props) => {
             changeHandler={props.changeHandler}
             key={field.id}
             nightMode={props.nightMode}
-            field={field} />
+            field={field}
+            elementSelectHandler={props.elementSelectHandler}
+        />
     })
 
     return (
